@@ -9,6 +9,6 @@ public interface IAddressBookService {
     List<Contact> getContactDetails();
     Contact getContactDetailsById(int conId);
     Contact createContactDetails(ContactDTO contactDTO);
-    Contact updateContactDetails(ContactDTO contactDTO);
+    Contact updateContactDetails(int conId, ContactDTO contactDTO);
     void deleteContactDetails(int conId);
 }
