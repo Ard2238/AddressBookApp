@@ -1,7 +1,11 @@
 package com.spring.addressbook.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class ContactDTO {
-    public String fullName, address, city, state;
+    @Pattern(regexp = "^[A-Z][a-zA-Z\\s]{2,}$", message = "Invalid Full Name")
+    public String fullName;
+    public String address, city, state;
     public int zipcode;
     public long phone;
 
