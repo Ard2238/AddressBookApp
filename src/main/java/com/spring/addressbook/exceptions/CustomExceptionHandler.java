@@ -22,4 +22,10 @@ public class CustomExceptionHandler {
         ResponseDTO responseDTO = new ResponseDTO("Rest Request Exception : ", errorMsg);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(ContactNotFoundException.class)
+    public ResponseEntity<ResponseDTO> handleEmployeeNotFoundException(ContactNotFoundException exception){
+        ResponseDTO responseDTO = new ResponseDTO("Rest Request Exception", exception.getMessage());
+        return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.BAD_REQUEST);
+    }
 }

@@ -1,6 +1,7 @@
 package com.spring.addressbook.services;
 
 import com.spring.addressbook.dto.ContactDTO;
+import com.spring.addressbook.exceptions.ContactNotFoundException;
 import com.spring.addressbook.model.Contact;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,8 @@ public class AddressBookService implements IAddressBookService {
 
     @Override
     public Contact getContactDetailsById(int conId) {
-        return contactList.get(conId-1);
+        return contactList.stream().filter(contact -> contact.getContactId() == conId)
+                .findFirst().orElseThrow(()-> new ContactNotFoundException("Contact Not Found"));
     }
 
     @Override
